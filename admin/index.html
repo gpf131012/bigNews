@@ -76,7 +76,8 @@
     },
     success: function(backDate) {
       //设置左侧头像和名字
-      $('user_infe>img').attr('src', backDate.data.userPic);
+      $('user_info>img').attr('src', backDate.data.userPic);
+      $('user_info>span').text('欢迎' + backDate.data.nickname);
       //右侧顶部的头像
       $('.user_center_link>img').attr('src', backDate.data.userPic);
     },
