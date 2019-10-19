@@ -67,6 +67,29 @@
       $(this).addClass('active').siblings().removeClass('active');
     })
   });
+
+  //获取用户信息
+  $.ajax({
+    url: 'http://localhost:8080/api/v1/admin/user/info',
+    headers: {
+      Authorization: window.localStorage.getItem('token')
+    },
+    success: function(backDate) {
+      //设置左侧头像和名字
+      $('user_infe>img').attr('src', backDate.data.userPic);
+      //右侧顶部的头像
+      $('.user_center_link>img').attr('src', backDate.data.userPic);
+    },
+    //请求失败之后的回调函数
+    error: function(backDate) {
+      console.log('我错了');
+      console.log(backDate);
+      if (backDate.statusText === 'Forbidden') {
+        alert('请登录');
+        window.location.href = './login.html'
+      }
+    }
+  })
 </script>
 
 </html>

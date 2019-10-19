@@ -62,7 +62,10 @@
           if (backDate.code === 400) {
             alert(backDate.msg);
           } else if (backDate.code === 200) {
-            alert(backDate.msg);
+            // alert(backDate.msg);
+            //保存token 
+            window.localStorage.setItem('token', backDate.token);
+            //跳转
             window.location.href = './index.html'
           }
         }
